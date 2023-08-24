@@ -24,35 +24,35 @@ jobs:
       run: yarn lerna bootstrap
 
     - name: Publish
-        run: |
-          version=`node -p "require('./lerna.json').version"`
-          
-          if [ "${{github.ref}}" == "refs/heads/master" ]
+      run: |
+        version=`node -p "require('./lerna.json').version"`
+        
+        if [ "${{github.ref}}" == "refs/heads/master" ]
+        then
+          tag=latest
+        
+          # Tag the commit with the correct version
+          git tag $version
+          git push origin $version
+        else
+          if [ "${{github.ref}}" == "refs/heads/dev" ]
           then
-            tag=latest
-          
-            # Tag the commit with the correct version
-            git tag $version
-            git push origin $version
+            tag="dev"
           else
-            if [ "${{github.ref}}" == "refs/heads/dev" ]
-            then
-              tag="dev"
-            else
-              tag="feat"
-            fi
-            sha=${{github.sha}}
-            short_commit_hash=${sha:0:7}
-            version=$version-$tag-${{github.run_number}}-$short_commit_hash
+            tag="feat"
           fi
-          
-          yarn lerna publish $version \
-          --dist-tag $tag \
-          --no-verify-access \
-          --no-git-tag-version \
-          --no-push \
-          -y
-          
-          echo Package published with version: ${version}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_WRITE_TOKEN }}
+          sha=${{github.sha}}
+          short_commit_hash=${sha:0:7}
+          version=$version-$tag-${{github.run_number}}-$short_commit_hash
+        fi
+        
+        yarn lerna publish $version \
+        --dist-tag $tag \
+        --no-verify-access \
+        --no-git-tag-version \
+        --no-push \
+        -y
+        
+        echo Package published with version: ${version}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_WRITE_TOKEN }}
