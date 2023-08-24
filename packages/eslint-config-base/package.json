@@ -1,10 +1,10 @@
 {
-  "name": "@qompium/eslint-config-q-base",
+  "name": "@extrahorizon/eslint-config-base",
   "version": "0.0.0",
-  "description": "Q linting base",
-  "author": "Qompium",
-  "license": "MIT",
-  "repository": "https://github.com/fibricheck/q-linting",
+  "description": "Extra Horizon Linting Base",
+  "author": "Extra Horizon",
+  "license": "Internal",
+  "repository": "https://github.com/ExtraHorizon/linting",
   "main": "index.js",
   "files": [
     "index.js"

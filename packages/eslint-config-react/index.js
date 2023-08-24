@@ -13,7 +13,7 @@ module.exports = {
     },
   },
   extends: [
-    '@qompium/eslint-config-q-base',
+    '@extrahorizon/eslint-config-base',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react/jsx-runtime',

@@ -1,4 +1,4 @@
-name: build-and-publish
+name: Build and Publish Linting Tools
 on:
   push:
     branches:
@@ -8,37 +8,51 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-        registry-url: 'https://registry.npmjs.org'
-    - run: yarn
-    - run: yarn lerna bootstrap
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.QOMPIUM_NPM_TOKEN }}
-    - uses: actions/setup-node@v1
-      with:
-        registry-url: 'https://registry.npmjs.org'
-        scope: '@qompium'
-    - run: |
-        project_version=`node -p "require('./lerna.json').version"`
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-        if [ "$GITHUB_REF" == "refs/heads/master" ]
-        then
-          version="$project_version"
-          dist_tag="latest"
-        else
-          short_commit_hash=${GITHUB_SHA:0:7}
-          version="$project_version-alpha.$GITHUB_RUN_NUMBER.$short_commit_hash"
-          dist_tag="alpha"
-        fi
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+        registry-url: 'https://npm.pkg.github.com'
+        cache: 'yarn'
 
-        yarn lerna publish $version \
-          --dist-tag $dist_tag \
+    - name: Install dependencies
+      run: yarn
+
+    - name: Run lerna
+      run: yarn lerna bootstrap
+
+    - name: Publish
+        run: |
+          version=`node -p "require('./lerna.json').version"`
+          
+          if [ "${{github.ref}}" == "refs/heads/master" ]
+          then
+            tag=latest
+          
+            # Tag the commit with the correct version
+            git tag $version
+            git push origin $version
+          else
+            if [ "${{github.ref}}" == "refs/heads/dev" ]
+            then
+              tag="dev"
+            else
+              tag="feat"
+            fi
+            sha=${{github.sha}}
+            short_commit_hash=${sha:0:7}
+            version=$version-$tag-${{github.run_number}}-$short_commit_hash
+          fi
+          
+          yarn lerna publish $version \
+          --dist-tag $tag \
           --no-verify-access \
           --no-git-tag-version \
           --no-push \
           -y
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.QOMPIUM_NPM_TOKEN }}
+          
+          echo Package published with version: ${version}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_WRITE_TOKEN }}

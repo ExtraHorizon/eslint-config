@@ -1,16 +1,16 @@
 {
-  "name": "@qompium/eslint-config-q-node",
+  "name": "@extrahorizon/eslint-config-node",
   "version": "0.0.0",
-  "description": "Q linting node",
-  "author": "Qompium",
-  "license": "MIT",
-  "repository": "https://github.com/fibricheck/q-linting",
+  "description": "Extra Horizon Linting Node",
+  "author": "Extra Horizon",
+  "license": "Internal",
+  "repository": "https://github.com/ExtraHorizon/linting",
   "main": "index.js",
   "files": [
     "index.js"
   ],
   "dependencies": {
-    "@qompium/eslint-config-q-base": "0.0.0",
+    "@extrahorizon/eslint-config-base": "0.0.0",
     "eslint-plugin-jest": "^26.4.5"
   },
   "peerDependencies": {
