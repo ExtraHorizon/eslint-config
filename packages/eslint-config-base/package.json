@@ -4,7 +4,7 @@
   "description": "Extra Horizon Linting Base",
   "author": "Extra Horizon",
   "license": "Internal",
-  "repository": "https://github.com/ExtraHorizon/linting",
+  "repository": "https://github.com/ExtraHorizon/eslint-config",
   "main": "index.js",
   "files": [
     "index.js"

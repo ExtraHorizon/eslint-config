@@ -4,7 +4,7 @@
   "description": "Extra Horizon Linting Tools",
   "author": "Extra Horizon",
   "license": "Internal",
-  "repository": "https://github.com/ExtraHorizon/linting",
+  "repository": "https://github.com/ExtraHorizon/eslint-config",
   "scripts": {
     "build": "yarn lerna run build"
   },
