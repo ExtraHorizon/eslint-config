@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@qompium/eslint-config-q-base'],
+  extends: ['@extrahorizon/eslint-config-base'],
   plugins: ["jest"],
   rules: {
     // For the node service we use the console to log.

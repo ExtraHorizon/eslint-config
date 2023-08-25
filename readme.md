@@ -1,12 +1,12 @@
-# @qompium/eslint-config
+# @extrahorizon/eslint-config
 
-This project provides the ESLint configuration used within Qompium.
+This project provides the ESLint configuration used within Extra Horizon.
 
 The configuration is published as 3 packages:
 
-* `@qompium/eslint-config-q-base`: Collection of plugins/rules shared between all projects
-* `@qompium/eslint-config-q-node`: Extending on the `-base` package with node specific plugins/rules 
-* `@qompium/eslint-config-q-react`: Extending on the `-base` package with react specific plugins/rules
+* `@extrahorizon/eslint-config-base`: Collection of plugins/rules shared between all projects
+* `@extrahorizon/eslint-config-node`: Extending on the `-base` package with node specific plugins/rules 
+* `@extrahorizon/eslint-config-react`: Extending on the `-base` package with react specific plugins/rules
 
 # Usage
 
@@ -16,7 +16,7 @@ Add the following lines to your react project its `package.json`:
 ```json
 {
   "devDependencies": {
-    "@qompium/eslint-config-q-react": "^1.2.1",
+    "@extrahorizon/eslint-config-react": "^1.2.1",
     "eslint": "^7.3.1"
   },
   "scripts": {
@@ -28,7 +28,7 @@ Add the following lines to your react project its `package.json`:
 Add a `.eslintrc.js` file with the following content:
 ```js
 module.exports = {
-  extends: ['@qompium/eslint-config-q-react'],
+  extends: ['@extrahorizon/eslint-config-react'],
   rules: {
     // Custom project rules come here, if required
   }
@@ -42,7 +42,7 @@ Add the following lines to your node project its `package.json`:
 ```json
 {
   "devDependencies": {
-    "@qompium/eslint-config-q-node": "^1.2.1",
+    "@extrahorizon/eslint-config-node": "^1.2.1",
     "eslint": "^7.3.1"
   },
   "scripts": {
@@ -54,7 +54,7 @@ Add the following lines to your node project its `package.json`:
 Add a `.eslintrc.js` file with the following content:
 ```js
 module.exports = {
-  extends: ['@qompium/eslint-config-q-node'],
+  extends: ['@extrahorizon/eslint-config-node'],
   rules: {
     // Custom project rules come here, if required
   }

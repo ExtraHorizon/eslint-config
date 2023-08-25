@@ -1,16 +1,16 @@
 {
-  "name": "@qompium/eslint-config-q-react",
+  "name": "@extrahorizon/eslint-config-react",
   "version": "0.0.0",
-  "description": "Q linting for React",
-  "author": "Qompium",
-  "license": "MIT",
-  "repository": "https://github.com/fibricheck/q-linting",
+  "description": "Extra Horizon For React",
+  "author": "Extra Horizon",
+  "license": "Internal",
+  "repository": "https://github.com/ExtraHorizon/eslint-config",
   "main": "index.js",
   "files": [
     "index.js"
   ],
   "dependencies": {
-    "@qompium/eslint-config-q-base": "0.0.0",
+    "@extrahorizon/eslint-config-base": "0.0.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
