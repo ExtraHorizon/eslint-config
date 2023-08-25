@@ -1,5 +1,5 @@
 {
-  "name": "linting",
+  "name": "eslint-config",
   "version": "0.0.0",
   "description": "Extra Horizon Linting Tools",
   "author": "Extra Horizon",
