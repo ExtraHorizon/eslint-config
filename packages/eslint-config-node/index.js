@@ -13,6 +13,10 @@ module.exports = {
         caseInsensitive: true /* ignore case. Options: [true, false] */
       }
     }],
+    // https://eslint.org/docs/latest/rules/no-restricted-imports
+    "no-restricted-imports": ["error", {
+      "patterns": ["@extrahorizon/*/build/*"]
+    }],
     // https://eslint.org/docs/rules/curly
     curly: ['error', 'all'],
     // https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-disabled-tests.md
